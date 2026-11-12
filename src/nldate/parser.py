@@ -206,7 +206,7 @@ def _parse_absolute(text: str, today: date) -> date | None:
     match = _ISO.fullmatch(text)
     if match:
         return date(int(match[1]), int(match[3]), int(match[4]))
-    
+
     match = _SLASH.fullmatch(text)
     if match:
         year = int(match[3]) if match[3] else today.year
