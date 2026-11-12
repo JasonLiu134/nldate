@@ -69,6 +69,8 @@ def test_absolute_dates(text: str, expected: date) -> None:
         ("twenty-one days from now", date(2025, 12, 3)),
         ("2 weeks, 3 days and 1 month after today", date(2025, 12, 29)),
         ("1 week before next tuesday", date(2025, 11, 11)),
+        ("2025/12/04", date(2025, 12, 4)),
+        ("2025/1/5", date(2025, 1, 5)),
     ],
 )
 def test_offsets(text: str, expected: date) -> None:

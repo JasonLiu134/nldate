@@ -119,7 +119,7 @@ _DAY_AROUND = re.compile(r"(?:the )?day (before|after) (.+)")
 _RELATIVE_TO = re.compile(r"(.+?) (before|after|from) (.+)")
 _NEXT_UNIT = re.compile(r"(next|last|this) (week|month|year)")
 _WEEKDAY = re.compile(rf"(?:(next|last|this) )?({_WEEKDAY_RE})")
-_ISO = re.compile(r"(\d{4})-(\d{1,2})-(\d{1,2})")
+_ISO = re.compile(r"(\d{4})([-/])(\d{1,2})\2(\d{1,2})")
 _SLASH = re.compile(r"(\d{1,2})/(\d{1,2})(?:/(\d{4}))?")
 _MONTH_FIRST = re.compile(
     rf"({_MONTH_RE})\.? (\d{{1,2}})(?:st|nd|rd|th)?(?:,? (\d{{4}}))?"
@@ -205,8 +205,8 @@ def _parse_weekday(qualifier: str | None, name: str, today: date) -> date:
 def _parse_absolute(text: str, today: date) -> date | None:
     match = _ISO.fullmatch(text)
     if match:
-        return date(int(match[1]), int(match[2]), int(match[3]))
-
+        return date(int(match[1]), int(match[3]), int(match[4]))
+    
     match = _SLASH.fullmatch(text)
     if match:
         year = int(match[3]) if match[3] else today.year
