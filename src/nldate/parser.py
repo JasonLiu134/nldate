@@ -134,8 +134,7 @@ _Offset = tuple[int, int]
 
 def _normalize(s: str) -> str:
     text = " ".join(s.lower().split()).rstrip(".!?")
-    if text.startswith("on "):
-        text = text[3:]
+    text = text.removeprefix("on ")
     return text
 
 
