@@ -125,7 +125,7 @@ _MONTH_FIRST = re.compile(
     rf"({_MONTH_RE})\.? (\d{{1,2}})(?:st|nd|rd|th)?(?:,? (\d{{4}}))?"
 )
 _DAY_FIRST = re.compile(
-    rf"(\d{{1,2}})(?:st|nd|rd|th)?(?: of)? ({_MONTH_RE})\.?(?:,? (\d{{4}}))?"
+    rf"(?:the )?(\d{{1,2}})(?:st|nd|rd|th)?(?: of)? ({_MONTH_RE})\.?(?:,? (\d{{4}}))?"
 )
 
 # An offset is (months, days); years are folded into months, weeks into days.
